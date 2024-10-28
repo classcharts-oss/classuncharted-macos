@@ -30,6 +30,7 @@ enum ApiResponse<Data: Codable, Meta: Codable>: Codable {
         if let data = try container.decodeIfPresent(Data.self, forKey: .data),
            let meta = try container.decodeIfPresent(Meta.self, forKey: .meta) {
             self = .success(data: data, meta: meta)
+            return
         }
 
         if let code = try container.decodeIfPresent(Int8.self, forKey: .success),

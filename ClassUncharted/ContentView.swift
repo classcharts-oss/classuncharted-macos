@@ -26,11 +26,12 @@ struct ContentView<A: APIProvider>: View {
         }
         .padding()
         .task {
-            guard let announcements = try? await apiClient.getAnnouncements() else {
-                return
+            do {
+                let announcements = try await apiClient.getAnnouncements()
+                self.announcements = announcements.data
+            } catch let error {
+                print(error)
             }
-
-            self.announcements = announcements.data
         }
     }
 }
