@@ -12,3 +12,5 @@ struct Announcement: Codable {
     var title: String
     var description: String
 }
+
+typealias AnnouncementResponse = ClientResponse<[Announcement], AnyCodableValue>

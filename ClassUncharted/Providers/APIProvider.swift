@@ -6,8 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
 
-protocol APIProvider {
-    func getDetentions() -> [Detention]
-    func getAnnouncements() -> [Announcement]
+protocol APIProvider: ObservableObject {
+    func getAnnouncements() async throws -> AnnouncementResponse
 }
